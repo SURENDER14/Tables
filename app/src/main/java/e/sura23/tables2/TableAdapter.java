@@ -51,7 +51,8 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
         }
 
         public void bind(int position) {
-            mNumberTwotable.setText (String.valueOf (position));
+            mNumberTwotable.setText (Table.numberTwoTable (position));
+            mTextTwoTable.setText (Table.textTwoTable ());
         }
     }
 }
