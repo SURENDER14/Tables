@@ -15,6 +15,11 @@ import android.widget.TextView;
 public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListItem> {
 
     int itemCount = 15;
+    ListItemClickListener mListItemClickListener;
+
+    TableAdapter(ListItemClickListener itemClickListener) {
+        mListItemClickListener = itemClickListener;
+    }
 
     @NonNull
     @Override
@@ -33,13 +38,18 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
         holder.bind (position);
     }
 
-
     @Override
     public int getItemCount() {
         return itemCount;
     }
 
-    public class NumberListItem extends RecyclerView.ViewHolder {
+
+    public interface ListItemClickListener {
+        void onListItemClick(int adapterPosition);
+
+    }
+
+    public class NumberListItem extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mNumberTwotable;
         private TextView mTextTwoTable;
@@ -48,11 +58,20 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
             super (itemView);
             mNumberTwotable = itemView.findViewById (R.id.tv_number_two_table);
             mTextTwoTable = itemView.findViewById (R.id.tv_text_two_table);
+            itemView.setOnClickListener (this);
         }
 
         public void bind(int position) {
             mNumberTwotable.setText (Table.numberTwoTable (position));
             mTextTwoTable.setText (Table.textTwoTable ());
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            int adapterPosition = getAdapterPosition ();
+            mListItemClickListener.onListItemClick (adapterPosition);
+
         }
     }
 }
