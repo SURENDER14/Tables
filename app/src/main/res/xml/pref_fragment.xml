@@ -4,7 +4,7 @@
 
 
         android:defaultValue="true"
-        android:key="display_text"
+        android:key="@string/pref_key"
         android:summaryOff="hidden"
         android:summaryOn="shown"
         android:title="@string/display_text" />

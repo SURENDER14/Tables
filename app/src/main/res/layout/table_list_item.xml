@@ -19,7 +19,9 @@
         android:id="@+id/tv_text_two_table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:fontFamily="monospace"
+        android:text="test"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:textSize="18sp" />
 
     <View

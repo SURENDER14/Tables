@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,12 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
 
     int itemCount = 15;
     ListItemClickListener mListItemClickListener;
+    boolean TextTableVisiblity;
+    String TAG = TableAdapter.class.getSimpleName ();
 
-    TableAdapter(ListItemClickListener itemClickListener) {
+    TableAdapter(ListItemClickListener itemClickListener, boolean textTableVisiblity) {
         mListItemClickListener = itemClickListener;
+        TextTableVisiblity = textTableVisiblity;
     }
 
     @NonNull
@@ -31,6 +35,12 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
         boolean shouldAttachToParentImmediately = false;
         View view = Inflater.inflate (layoutIDForTableListItem, parent, shouldAttachToParentImmediately);
         NumberListItem numberListItem = new NumberListItem (view);
+        if (TextTableVisiblity == true) {
+            numberListItem.mTextTwoTable.setVisibility (View.VISIBLE);
+        } else {
+            numberListItem.mTextTwoTable.setVisibility (View.INVISIBLE);
+        }
+        Log.d (TAG, String.valueOf (TextTableVisiblity));
         return numberListItem;
     }
 
@@ -50,7 +60,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
 
     }
 
-    public class NumberListItem extends RecyclerView.ViewHolder implements View.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+    public class NumberListItem extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mNumberTwotable;
         private TextView mTextTwoTable;
@@ -72,11 +82,6 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
 
             int adapterPosition = getAdapterPosition ();
             mListItemClickListener.onListItemClick (adapterPosition);
-
-        }
-
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
 
         }
     }
