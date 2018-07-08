@@ -12,17 +12,22 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop">
+
+        </activity>
+        <activity
+            android:name=".DetailNumber"
+            android:label="Detail View"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Preference_fragment"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".what_table">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DetailNumber"
-            android:label="Detail View"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".Preference_fragment"></activity>
     </application>
 
 </manifest>

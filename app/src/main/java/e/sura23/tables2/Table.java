@@ -6,10 +6,11 @@ package e.sura23.tables2;
 
 public class Table {
 
-    static int multiply = 2;
     static int result;
 
-    static String numberTwoTable(int position) {
+    static String numberTwoTable(int position, int multiply) {
+
+
         switch (position) {
             case 0:
                 result = multiply * 1;

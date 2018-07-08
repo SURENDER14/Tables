@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class DetailNumber extends AppCompatActivity {
 
+    int multiplier;
     private TextView mDetail_number_table;
 
     @Override
@@ -23,8 +24,9 @@ public class DetailNumber extends AppCompatActivity {
 
         Intent intent = getIntent ();
         if (intent.hasExtra (Intent.EXTRA_TEXT)) {
+            multiplier = intent.getIntExtra ("Multiplier", 1);
 
-            String setText = Table.numberTwoTable (intent.getIntExtra (Intent.EXTRA_TEXT, 0));
+            String setText = Table.numberTwoTable (intent.getIntExtra (Intent.EXTRA_TEXT, 0), multiplier);
             setText = setText + "\n" + Table.textTwoTable ();
             mDetail_number_table.setText (setText);
         }

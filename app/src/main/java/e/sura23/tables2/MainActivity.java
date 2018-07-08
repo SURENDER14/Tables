@@ -15,7 +15,9 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity implements TableAdapter.ListItemClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     boolean textTableVisiblity;
+    String Multiplier = "Multiplier";
     String TAG = MainActivity.class.getSimpleName ();
+    int multiplier;
     private RecyclerView mRecyclerView;
     private TableAdapter mTableAdapter;
 
@@ -24,6 +26,11 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById (R.id.rv_tables);
+        Intent intent = getIntent ();
+
+        if (intent.hasExtra (Intent.EXTRA_TEXT)) {
+            multiplier = intent.getIntExtra (intent.EXTRA_TEXT, 1);
+        }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager (this);
         mRecyclerView.setLayoutManager (layoutManager);
@@ -31,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
         textTableVisiblity = sharedPreferences.getBoolean (getString (R.string.pref_key), false);
         Log.d (TAG, String.valueOf (textTableVisiblity));
         sharedPreferences.registerOnSharedPreferenceChangeListener (this);
-        mTableAdapter = new TableAdapter (this, textTableVisiblity);
+        mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier);
         mRecyclerView.setAdapter (mTableAdapter);
 
 
@@ -42,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
 
         Intent intent = new Intent (MainActivity.this, DetailNumber.class);
         intent.putExtra (Intent.EXTRA_TEXT, adapterPosition);
+        intent.putExtra (Multiplier, multiplier);
         startActivity (intent);
     }
 
@@ -67,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals (getString (R.string.pref_key))) {
             textTableVisiblity = sharedPreferences.getBoolean (key, true);
-            mTableAdapter = new TableAdapter (this, textTableVisiblity);
+            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier);
             mRecyclerView.setAdapter (mTableAdapter);
             Log.d (TAG, String.valueOf (textTableVisiblity));
 

@@ -17,13 +17,15 @@ import android.widget.TextView;
 public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListItem> {
 
     int itemCount = 15;
+    int multiplier;
     ListItemClickListener mListItemClickListener;
     boolean TextTableVisiblity;
     String TAG = TableAdapter.class.getSimpleName ();
 
-    TableAdapter(ListItemClickListener itemClickListener, boolean textTableVisiblity) {
+    TableAdapter(ListItemClickListener itemClickListener, boolean textTableVisiblity, int multiplier) {
         mListItemClickListener = itemClickListener;
         TextTableVisiblity = textTableVisiblity;
+        this.multiplier = multiplier;
     }
 
     @NonNull
@@ -73,7 +75,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
         }
 
         public void bind(int position) {
-            mNumberTwotable.setText (Table.numberTwoTable (position));
+            mNumberTwotable.setText (Table.numberTwoTable (position, multiplier));
             mTextTwoTable.setText (Table.textTwoTable ());
         }
 
