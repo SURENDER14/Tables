@@ -1,6 +1,7 @@
 package e.sura23.tables2;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -49,7 +50,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
 
     }
 
-    public class NumberListItem extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class NumberListItem extends RecyclerView.ViewHolder implements View.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
         private TextView mNumberTwotable;
         private TextView mTextTwoTable;
@@ -71,6 +72,11 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
 
             int adapterPosition = getAdapterPosition ();
             mListItemClickListener.onListItemClick (adapterPosition);
+
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
 
         }
     }

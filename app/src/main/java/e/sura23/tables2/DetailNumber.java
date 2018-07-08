@@ -1,6 +1,7 @@
 package e.sura23.tables2;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -14,6 +15,8 @@ public class DetailNumber extends AppCompatActivity {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.detail_number);
         mDetail_number_table = (TextView) findViewById (R.id.tv_detail_number_table);
+
+
         Intent intent = getIntent ();
         if (intent.hasExtra (Intent.EXTRA_TEXT)) {
 
