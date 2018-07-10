@@ -105,7 +105,7 @@ public class Table {
         };
 
         if ((number % 100) < 20) {
-            text = ones[number % 1000];
+            text = ones[number % 100];
             number /= 100;
         } else {
             text = ones[number % 10];

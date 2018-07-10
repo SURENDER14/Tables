@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class what_table extends AppCompatActivity {
 
@@ -23,8 +24,14 @@ public class what_table extends AppCompatActivity {
     public void onButtonClick(View v) {
         String getMultiplier = multiplier.getText ().toString ();
         int numberMultiplier = Integer.parseInt (getMultiplier);
-        Intent intent = new Intent (what_table.this, MainActivity.class);
-        intent.putExtra (Intent.EXTRA_TEXT, numberMultiplier);
-        startActivity (intent);
+        if ((numberMultiplier >= 1)&&(numberMultiplier <= 50)) {
+
+            Intent intent = new Intent (what_table.this, MainActivity.class);
+            intent.putExtra (Intent.EXTRA_TEXT, numberMultiplier);
+            startActivity (intent);
+        } else {
+            String displayToast = " Thappu Papaa. Enter numbers only between 1 and 50 ";
+            Toast.makeText (this, displayToast, Toast.LENGTH_LONG).show ();
+        }
     }
 }
