@@ -37,6 +37,7 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
         boolean shouldAttachToParentImmediately = false;
         View view = Inflater.inflate (layoutIDForTableListItem, parent, shouldAttachToParentImmediately);
         NumberListItem numberListItem = new NumberListItem (view);
+
         if (TextTableVisiblity == true) {
             numberListItem.mTextTwoTable.setVisibility (View.VISIBLE);
         } else {

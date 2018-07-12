@@ -3,4 +3,10 @@
     <color name="colorPrimary">#1b5e20</color>
     <color name="colorPrimaryDark">#2e7d32</color>
     <color name="colorAccent">#263238</color>
+
+    <color name="holoGreen">@android:color/holo_green_light</color>
+    <color name="red">#d50000</color>
+    <color name="green">#00c853</color>
+    <color name="blue">#2962ff</color>
+
 </resources>
