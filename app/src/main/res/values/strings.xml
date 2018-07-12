@@ -6,7 +6,7 @@
     <string name="Shown">Shown</string>
     <string name="pref_key">display_text</string>
     <string name="et_display_string">A number less than 50 </string>
-    <string name="tv_what_table">Hey Gundoo ,Welcome to the Kid\'s first app!! </string>
+    <string name="tv_what_table">Welcome to the Table\'s app!! </string>
     <string name="button">button</string>
     <string name="go">Go!!</string>
 </resources>

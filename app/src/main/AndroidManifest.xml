@@ -11,16 +11,19 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:parentActivityName=".what_table">
 
         </activity>
         <activity
             android:name=".DetailNumber"
             android:label="Detail View"
             android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".Preference_fragment"
             android:parentActivityName=".MainActivity"></activity>
+
         <activity android:name=".what_table">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

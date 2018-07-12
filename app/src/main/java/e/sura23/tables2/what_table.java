@@ -30,7 +30,7 @@ public class what_table extends AppCompatActivity {
             intent.putExtra (Intent.EXTRA_TEXT, numberMultiplier);
             startActivity (intent);
         } else {
-            String displayToast = " Thappu Papaa. Enter numbers only between 1 and 50 ";
+            String displayToast = "Enter numbers only between 1 and 50";
             Toast.makeText (this, displayToast, Toast.LENGTH_LONG).show ();
         }
     }
