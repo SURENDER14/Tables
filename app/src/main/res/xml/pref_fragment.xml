@@ -13,7 +13,7 @@
         android:defaultValue="@string/list_pref_default_value"
         android:entries="@array/pref_color_options_labels"
         android:entryValues="@array/pref_color_options_values"
-        android:key="@string/list_pref_default_value"
+        android:key="@string/list_pref_key"
         android:title="@string/list_pref_labels" />
 
 </PreferenceScreen>

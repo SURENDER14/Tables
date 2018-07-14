@@ -18,14 +18,17 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
 
     int itemCount = 15;
     int multiplier;
+    int Color;
+    String colorFromPreference;
     ListItemClickListener mListItemClickListener;
     boolean TextTableVisiblity;
-    String TAG = TableAdapter.class.getSimpleName ();
 
-    TableAdapter(ListItemClickListener itemClickListener, boolean textTableVisiblity, int multiplier) {
+
+    TableAdapter(ListItemClickListener itemClickListener, boolean textTableVisiblity, int multiplier, String color) {
         mListItemClickListener = itemClickListener;
         TextTableVisiblity = textTableVisiblity;
         this.multiplier = multiplier;
+        colorFromPreference = color;
     }
 
     @NonNull
@@ -43,7 +46,9 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberListIt
         } else {
             numberListItem.mTextTwoTable.setVisibility (View.INVISIBLE);
         }
-        Log.d (TAG, String.valueOf (TextTableVisiblity));
+        Color = GetPreferedColor.setColor (context, colorFromPreference);
+
+        numberListItem.itemView.setBackgroundColor (Color);
         return numberListItem;
     }
 

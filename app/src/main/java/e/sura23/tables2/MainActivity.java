@@ -1,9 +1,11 @@
 package e.sura23.tables2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,12 +16,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+
 public class MainActivity extends AppCompatActivity implements TableAdapter.ListItemClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     boolean textTableVisiblity;
     String Multiplier = "Multiplier";
-    String TAG = MainActivity.class.getSimpleName ();
     int multiplier;
+    String colorFromPreference = "holo_green";
     private RecyclerView mRecyclerView;
     private TableAdapter mTableAdapter;
 
@@ -45,13 +48,15 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
         mRecyclerView.setLayoutManager (layoutManager);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences (this);
         textTableVisiblity = sharedPreferences.getBoolean (getString (R.string.pref_key), false);
-        Log.d (TAG, String.valueOf (textTableVisiblity));
+
+
         sharedPreferences.registerOnSharedPreferenceChangeListener (this);
-        mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier);
+        mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference);
         mRecyclerView.setAdapter (mTableAdapter);
 
 
     }
+
 
     @Override
     public void onListItemClick(int adapterPosition) {
@@ -88,9 +93,14 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals (getString (R.string.pref_key))) {
             textTableVisiblity = sharedPreferences.getBoolean (key, true);
-            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier);
+            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference);
             mRecyclerView.setAdapter (mTableAdapter);
-            Log.d (TAG, String.valueOf (textTableVisiblity));
+        } else if (key.equals ("color_key")) {
+
+            colorFromPreference = sharedPreferences.getString (key, getString (R.string.pref_color_value_default));
+            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference);
+            mRecyclerView.setAdapter (mTableAdapter);
+
 
         }
     }

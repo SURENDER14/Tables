@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Tables2</string>
-    <string name="pref_menu_item"> Show in Words </string>
+    <string name="pref_menu_item"> Settings </string>
     <string name="display_text">Show in Words</string>
     <string name="hidden">Hidden</string>
     <string name="Shown">Shown</string>
@@ -15,7 +15,7 @@
 
     <string name="list_pref_labels">Set Color</string>
     <string name="list_pref_key">color_key</string>
-    <string name="list_pref_default_value">holo_green_light</string>
+    <string name="list_pref_default_value">holo_green</string>
 
     <string name="pref_color_label_red">Red</string>
     <string name="pref_color_label_green">Green</string>
