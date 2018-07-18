@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
     String Multiplier = "Multiplier";
     int multiplier;
     String colorFromPreference = "holo_green";
+    int multiplicationFactor = 15;
+    String TAG = MainActivity.class.getSimpleName ();
     private RecyclerView mRecyclerView;
     private TableAdapter mTableAdapter;
 
@@ -48,10 +50,10 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
         mRecyclerView.setLayoutManager (layoutManager);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences (this);
         textTableVisiblity = sharedPreferences.getBoolean (getString (R.string.pref_key), false);
-
-
+        multiplicationFactor = Integer.parseInt (sharedPreferences.getString ((getString (R.string.edit_text_key)), "15"));
+        colorFromPreference = sharedPreferences.getString (getString (R.string.list_pref_key), getString (R.string.pref_color_value_default));
         sharedPreferences.registerOnSharedPreferenceChangeListener (this);
-        mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference);
+        mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference, multiplicationFactor);
         mRecyclerView.setAdapter (mTableAdapter);
 
 
@@ -91,17 +93,22 @@ public class MainActivity extends AppCompatActivity implements TableAdapter.List
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
+
         if (key.equals (getString (R.string.pref_key))) {
             textTableVisiblity = sharedPreferences.getBoolean (key, true);
-            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference);
+            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference, multiplicationFactor);
             mRecyclerView.setAdapter (mTableAdapter);
         } else if (key.equals ("color_key")) {
-
+            Log.d (TAG, "Executed");
             colorFromPreference = sharedPreferences.getString (key, getString (R.string.pref_color_value_default));
-            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference);
+            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference, multiplicationFactor);
             mRecyclerView.setAdapter (mTableAdapter);
+        } else if (key.equals ("edit_text_key")) {
 
-
+            multiplicationFactor = Integer.parseInt (sharedPreferences.getString ((getString (R.string.edit_text_key)), "15"));
+            mTableAdapter = new TableAdapter (this, textTableVisiblity, multiplier, colorFromPreference, multiplicationFactor);
+            mRecyclerView.setAdapter (mTableAdapter);
         }
     }
 

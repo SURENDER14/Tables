@@ -28,4 +28,12 @@
     <string name="pref_color_label_default">Holo Green</string>
     <string name="pref_color_value_default">holo_green</string>
 
+
+    <!--EditTextPreference-->
+
+    <string name="edit_text_title">Tables Multiplication Factor (Max Value 15)</string>
+    <string name="edit_text_key">edit_text_key</string>
+    <string name="edit_text_default_value">15</string>
+
+
 </resources>

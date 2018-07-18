@@ -16,4 +16,11 @@
         android:key="@string/list_pref_key"
         android:title="@string/list_pref_labels" />
 
+    <EditTextPreference
+
+
+        android:defaultValue="@string/edit_text_default_value"
+        android:key="@string/edit_text_key"
+        android:title="@string/edit_text_title" />
+
 </PreferenceScreen>
